@@ -1,0 +1,205 @@
+taint_input:
+    class: # 类对象外部输入，比如socket.socket类
+      - module_name: socket # 模块名
+        class_name: socket # 类名
+        taint_pos: [0] # 外部输入的输出位置：0 - 返回值; 1 - 第一个参数位置; ...
+      - modolue_name: subprocess
+        class_name: Popen
+        taint_pos: [0, 1]
+      - module_name: paramiko
+        class_name: SSHClient
+        taint_pos: [0]
+      - module_name: cgi
+        class_name: FieldStorage
+        taint_pos: [0]
+      - module_name: imaplib
+        class_name: IMAP4_SSL
+        taint_pos: [0, 1]
+      - module_name: imaplib
+        class_name: IMAP4
+        taint_pos: [0, 1]
+      - module_name: imaplib
+        class_name: IMAP4_stream
+        taint_pos: [0, 1]
+      - module_name: ctypes
+        class_name: CDLL
+        taint_pos: [0, 1]
+      - module_name: code
+        class_name: InteractiveConsole
+        taint_pos: [0]
+      - module_name: http.client
+        class_name: HTTPConnection
+        taint_pos: [0, 1]
+      - module_name: http.client
+        class_name: HTTPSConnection
+        taint_pos: [0, 1]
+      - module_name: socketserver
+        class_name: BaseServer
+        taint_pos: [0, 2]
+      - module_name: socketserver
+        class_name: BaseRequestHandler
+        taint_pos: [0]
+      - module_name: xmlrpc.server
+        class_name: SimpleXMLRPCServer
+        taint_pos: [0, 1, 2]
+      - module_name: xmlrpc.server
+        class_name: DocXMLRPCServer
+        taint_pos: [0, 1, 2]
+      - module_name: poplib
+        class_name: POP3
+        taint_pos: [0, 1]
+      - module_name: poplib
+        class_name: POP3_SSL
+        taint_pos: [0, 1]
+      - module_name: ctypes
+        class_name: CDLL
+        taint_pos: [0, 1]
+      - module_name: ctypes
+        class_name: OleDLL
+        taint_pos: [0, 1]
+      - module_name: ctypes
+        class_name: WinDLL
+        taint_pos: [0 , 1]
+      - module_name: ctypes
+        class_name: PyDLL
+        taint_pos: [0 ,1]
+      - module_name: ctypes
+        class_name: LibraryLoader
+        taint_pos: [0, 1]
+      - module_name: ctypes
+        class_name: LoadLibrary
+        taint_pos: [0, 1]
+
+    method: # 类方法外部输入
+      - module_name: socket # 模块名
+        class_name: socket  # 类名
+        method_name: accept  # 方法名
+        taint_pos: [0] # 外部输入的输出位置：0 - 返回值; 1 - 第一个参数位置; ...
+      - module_name: socket
+        class_name: socket
+        method_name: connect
+        taint_pos: [1] 
+      - module_name: socket
+        class_name: socket
+        method_name: connect_ex
+        taint_pos: [1]  
+      - module_name: imaplib
+        class_name: IMAP4_SSL
+        method_name: uid
+        taint_pos: [0, 1, 3]
+      - module_name: code
+        class_name: InteractiveConsole
+        method_name: push
+        taint_pos: [0, 1]
+      - module_name: code
+        class_name: InteractiveConsole
+        method_name: runcode
+        taint_pos: [1]
+      - module_name: http.client
+        class_name: HTTPConnection
+        method_name: request
+        taint_pos: [1, 2]
+      - module_name: http.client
+        class_name: HTTPConnection
+        method_name: getresponse
+        taint_pos: [0]
+      - module_name: http.client
+        class_name: HTTPConnection
+        method_name: send
+        taint_pos: [1]
+      - module_name: http.client
+        class_name: HTTPConnection
+        method_name: putheader
+        taint_pos: [1]
+      - module_name: http.client
+        class_name: HTTPConnnection
+        method_name: endheaders
+        taint_pos: [1]
+      - module_name: socketserver
+        class_name: BaseRequestHandler
+        method_name: handle
+        taint_pos: []
+      - module_name: socketserver
+        class_name: BaseServer
+        method_name: handle_request
+        taint_pos: []
+      - module_name: socketserver
+        class_name: BaseServer
+        method_name: serve_forever
+        taint_pos: []
+      - module_name: imaplib
+        class_name: IMAP4
+        method_name: read
+        taint_pos: [0]
+      - module_name: imaplib
+        class_name: IMAP4
+        method_name: readline
+        taint_pos: [0]
+      - module_name: poplib
+        class_name: POP3
+        method_name: list
+        taint_pos: [0]
+      - module_name: poplib
+        class_name: POP3
+        method_name: list
+        taint_pos: [0, 1]
+      - module_name: poplib
+        class_name: POP3
+        method_name: top
+        taint_pos: [0, 1, 2]
+
+    func: # 函数类外部输入
+      - module_name: subprocess # 模块名
+        func_name: call   # 函数名
+        taint_pos: [0, 1]   # 外部输入的输出位置：0 - 返回值; 1 - 第一个参数位置; ...
+      - module_name: subprocess
+        func_name: check_output
+        taint_pos: [0, 1]
+      - module_name: pty
+        func_name: spawn
+        taint_pos: [1] 
+      - module_name: builtins
+        func_name: exec
+        taint_pos: [1]
+      - module_name: winreg
+        func_name: Openkey
+        taint_pos: [0, 2]
+      - module_name: winreg
+        func_name: SetValueEx
+        taint_pos: [1, 2, 5]
+      - module_name: winreg
+        func_name: DeleteValue
+        taint_pos: [1 ,2]
+      - module_name: os
+        func_name: system
+        taint_pos: [1]
+      - module_name: ctypes
+        func_name: mprotect
+        taint_pos: [1]
+      - module_name: ctypes
+        func_name: cast
+        taint_pos: [0, 1]
+      - module_name: socket
+        func_name: create_server
+        taint_pos: [0, 1]
+      - module_name: socket
+        func_name: create_connection
+        taint_pos: [0, 1]
+      - module_name: socket
+        func_name: fromshare
+        taint_pos: [0, 1]
+      - module_name: wsgiref.simple_server
+        func_name: make_server
+        taint_pos: [0, 1, 2, 3]
+
+    var: # 变量类外部输入
+       - module_name: ctypes # 模块名
+         var_name: windll    # 变量名
+       - module_name: ctypes
+         var_name: cdll
+       - module_name: ctypes
+         var_name: oledll
+       - module_name: ctypes
+         var_name: pydll
+       - module_name: ctypes
+         var_name: pythonapi

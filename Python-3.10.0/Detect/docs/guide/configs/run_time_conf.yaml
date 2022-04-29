@@ -1,0 +1,4 @@
+run_time_conf:
+    detect_timeout: 60s # 文件检测超时设置
+    memory_limit: 500M  # 内存大小限制
+    run_mode: release   # 检测模式: release | debug

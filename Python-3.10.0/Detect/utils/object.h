@@ -1,0 +1,5 @@
+#ifndef DETECT_UTILS_OBJECT_H
+#define DETECT_UTILS_OBJECT_H
+
+#endif
+

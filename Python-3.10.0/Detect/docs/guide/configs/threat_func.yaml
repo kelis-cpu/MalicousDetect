@@ -1,0 +1,113 @@
+threat_func:
+    class: # 危险类，比如subprocess.Popen
+      - module_name: subprocess # 模块名
+        class_name: Popen # 类名
+        param_pos: [1] # 外部输入生效的参数位置: -1 - 所有位置; 1 - 第一个参数位置; ...      
+    method: # 方法类危险方法
+      - module_name: code # 模块名
+        class_name: InteractiveConsole  # 类名
+        method_name: push # 方法名
+        param_pos: [1] # 外部输入生效的参数位置: -1 - 所有位置; 1 - 第一个参数位置; 
+      - module_name: code
+        class_name: InteractiveConsole
+        method_name: runcode
+        param_pos: [1]
+    func:
+      - module_name: subprocess
+        func_name: call
+        param_pos: [1]
+      - module_name: subprocess
+        func_name: check_output
+        param_pos: [1]
+      - module_name: ctype
+        func_name: mprotect
+        param_pos: [1]
+      - module_name: os
+        func_namel: system
+        param_pos: [1]
+      - module_name: winreg
+        func_name: SetValueEx
+        param_pos: [1, 2, 5]
+      - module_name: winreg
+        func_name: DeleteValue
+        param_pos: [1 ,2]
+      - module_name: builtins
+        func_name: exec
+        param_pos: [-1]
+      - module_name: os
+        func_name: popen
+        param_pos: [1]
+      - module_name: webbrowser
+        func_name: open
+        param_pos: [-1]
+      - module_name: webbrowser
+        func_name: open_new
+        param_pos: [-1]
+      - module_name: webbrowser
+        func_name: open_new_tab
+        param_pos: [-1]
+      - module_name: builtins
+        func_name: eval
+        param_pos: [1]
+      - module_name: subprocess
+        func_name: run
+        param_pos: [1]
+      - module_name: subprocess
+        func_name: check_call
+        param_pos: [1]
+      - module_name: subprocess
+        func_name: getstatusoutput
+        param_pos: [1]
+      - module_name: subprocess
+        func_name: getoutput
+        param_pos: [1]
+      - module_name: os
+        func_name: execl
+        param_pos: [1, 2]
+      - module_name: os
+        func_name: execle
+        param_pos: [1, 2]
+      - module_name: os
+        func_name: execlp
+        param_pos: [1, 2]
+      - module_name: os
+        func_name: execlpe
+        param_pos: [1, 2]
+      - module_name: os
+        func_name: execv
+        param_pos: [1, 2]
+      - module_name: os
+        func_name: execve
+        param_pos: [1, 2]
+      - module_name: os
+        func_name: execvp
+        param_pos: [1, 2]
+      - module_name: os
+        func_name: execvpe
+        param_pos: [1, 2]
+      - module_name: os
+        func_name: spawnl
+        param_pos: [2]
+      - module_name: os
+        func_name: spawnle
+        param_pos: [2]
+      - module_name: os
+        func_name: spawnlp
+        param_pos: [2]
+      - module_name: os
+        func_name: spawnlpe
+        param_pos: [2]
+      - module_name: os
+        func_name: spawnv
+        param_pos: [2, 3]
+      - module_name: os
+        func_name: spawnve
+        param_pos: [2, 3]
+      - module_name: os
+        func_name: spawnvp
+        param_pos: [2, 3]
+      - module_name: os
+        func_name: spawnvpe
+        param_pos: [2, 3]
+
+      
